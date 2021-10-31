@@ -4,11 +4,13 @@ import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import { ClienteReportComponent } from './cliente-report/cliente-report.component';
 import {ClienteRoutingModule} from './cliente.routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    ClienteRoutingModule
+    ClienteRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ClienteListComponent,

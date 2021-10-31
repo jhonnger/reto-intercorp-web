@@ -1,3 +1,50 @@
-<p>
-  cliente-form works!
-</p>
+<div class="container">
+  <div>
+    <h2>Registrar Cliente</h2>
+    <form action="" [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="nombre">Nombre</label>
+            <input  [ngClass]="{'is-invalid':enviado &&  f.nombre.errors}"  type="text" class="form-control" id="nombre" aria-describedby="nombre" formControlName="nombre" required>
+            <div *ngIf="enviado && f.nombre.errors" class="invalid-feedback">
+              <div *ngIf="f.nombre.errors.required">Debe ingresar el nombre</div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="apellido">Apellido</label>
+            <input [ngClass]="{'is-invalid':enviado &&  f.apellido.errors}" type="text" class="form-control" id="apellido" aria-describedby="apellido" formControlName="apellido" required>
+            <div *ngIf="enviado && f.apellido.errors" class="invalid-feedback">
+              <div *ngIf="f.apellido.errors.required">Debe ingresar el apellido</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="nombre">Fecha Nacimiento</label>
+            <input  [ngClass]="{'is-invalid':enviado &&  f.fechaNacimiento.errors}"  type="date"
+                    class="form-control"
+                    id="fechaNacimiento"
+                    aria-describedby="fechaNacimiento"
+                    formControlName="fechaNacimiento" required>
+            <div *ngIf="enviado && f.fechaNacimiento.errors" class="invalid-feedback">
+              <div *ngIf="f.fechaNacimiento.errors.required">Debe ingresar la fecha de nacimiento</div>
+              <div *ngIf="f.fechaNacimiento.errors.pattern">La fecha debe tener un formato válido DD/MM/YYYY</div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="apellido">Edad</label>
+            <input type="text" class="form-control" id="edad" aria-describedby="edad" disabled>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Registrar</button>&nbsp;
+        <button class="btn btn-secondary" type="reset" >Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
