@@ -27,15 +27,17 @@
                     class="form-control"
                     id="fechaNacimiento"
                     aria-describedby="fechaNacimiento"
+                    max="{{hoy | date:'dd-MM-yyyy'}}"
                     formControlName="fechaNacimiento" required>
             <div *ngIf="enviado && f.fechaNacimiento.errors" class="invalid-feedback">
               <div *ngIf="f.fechaNacimiento.errors.required">Debe ingresar la fecha de nacimiento</div>
               <div *ngIf="f.fechaNacimiento.errors.pattern">La fecha debe tener un formato válido DD/MM/YYYY</div>
+              <div *ngIf="f.fechaNacimiento.errors.validateDate">La fecha debe ser igual o menor a hoy</div>
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="apellido">Edad</label>
-            <input type="text" class="form-control" id="edad" aria-describedby="edad" disabled>
+            <input type="text" class="form-control" id="edad" aria-describedby="edad" disabled [value]="obtenerEdad()">
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@
 
       <div class="text-center">
         <button class="btn btn-primary" type="submit">Registrar</button>&nbsp;
-        <button class="btn btn-secondary" type="reset" >Cancelar</button>
+        <a class="btn btn-secondary" routerLink="/cliente" >Ir a listado</a>
       </div>
     </form>
   </div>

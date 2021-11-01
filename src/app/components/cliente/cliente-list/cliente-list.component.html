@@ -1,3 +1,33 @@
-<p>
-  cliente-list works!
-</p>
+<div style="display: flex; justify-content: space-between">
+  <div>
+    <h2>Clientes</h2>
+  </div>
+  <div *ngIf="!esParaReporte">
+    <a routerLink="crear" class="btn btn-primary">Registrar Nuevo Cliente</a>
+  </div>
+</div>
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Edad</th>
+      <th scope="col" *ngIf="esParaReporte">Fecha probable de muerte</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cliente of clientes ; trackBy: getId; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{cliente.nombre}}</td>
+      <td>{{cliente.apellido}}</td>
+      <td>{{cliente.fechaNacimiento | dateFromFireStore | date: 'dd/MM/yyyy'}}</td>
+      <td>{{obtenerEdad(cliente.fechaNacimiento)}}</td>
+      <td *ngIf="esParaReporte">{{obtenerFechaProbableDeMuerte(cliente.fechaNacimiento)  | date: 'dd/MM/yyyy'}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

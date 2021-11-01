@@ -5,16 +5,23 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import { ClienteReportComponent } from './cliente-report/cliente-report.component';
 import {ClienteRoutingModule} from './cliente.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {environment} from '../../../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AppModule} from '../../app.module';
+import {DateFromFireStorePipe} from '../../pipes/date-from-fire-store.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     ClienteRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   declarations: [
     ClienteListComponent,
     ClienteFormComponent,
-    ClienteReportComponent]
+    ClienteReportComponent,
+    DateFromFireStorePipe]
 })
 export class ClienteModule { }
